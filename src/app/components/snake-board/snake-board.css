@@ -1,0 +1,35 @@
+.game-container {
+  height: 95vh;
+
+  display: flex;
+  justify-content: center; /* centraliza na horizontal */
+  align-items: center; /* centraliza na vertical */
+}
+
+.board {
+  width: 600px;
+  height: 600px;
+
+  display: grid;
+
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.664);
+}
+
+.even {
+  background-color: #aad576;
+}
+
+.odd {
+  background-color: #8bc34a;
+}
+
+.food {
+  background-color: #f32e0b;
+}
+
+.snake {
+  background-color: #3b3ecf;
+}

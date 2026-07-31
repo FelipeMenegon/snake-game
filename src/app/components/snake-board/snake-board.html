@@ -1,0 +1,7 @@
+<div class="game-container">
+    <div class="board">
+        <div class="cell" *ngFor="let cell of cells" [class.snake]="isSnake(cell)" [class.even]="isEven(cell)" 
+            [class.odd]="!isEven(cell)" [class.food]="isFood(cell)">
+        </div>
+    </div>
+</div>
