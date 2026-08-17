@@ -19,11 +19,11 @@
 }
 
 .even {
-  background-color: #aad576;
+  background-color: rgb(182, 226, 128)
 }
 
 .odd {
-  background-color: #8bc34a;
+  background-color: rgb(153, 207, 87)
 }
 
 .food {

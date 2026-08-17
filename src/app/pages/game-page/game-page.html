@@ -1,1 +1,7 @@
-<app-snake-board/>
+@if (!showMenu){
+<app-snake-board />
+}
+
+@if (showMenu) {
+<app-game-menu [highScore]="highScore" />
+}
