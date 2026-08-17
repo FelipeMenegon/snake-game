@@ -15,6 +15,8 @@ export class Game {
 
   direction = 'RIGHT';
 
+  eatSound = new Audio('sound/eat.wav');
+
   constructor() {
     this.inicializeGame();
   }
@@ -29,10 +31,16 @@ export class Game {
   }
 
   generateFood() {
-    this.food = {
-      x: 5,
-      y: 5,
-    };
+    let newFood: Position;
+
+    do {
+      newFood = {
+        x: Math.floor(Math.random() * this.boardSize),
+        y: Math.floor(Math.random() * this.boardSize),
+      };
+    } while (this.snake.some((segment) => segment.x === newFood.x && segment.y === newFood.y));
+
+    this.food = newFood;
   }
 
   moveSnake() {
@@ -72,7 +80,31 @@ export class Game {
       return;
     }
 
-    this.snake = [newHead, ...this.snake.slice(0, -1)];
+    const isFood = newHead.x === this.food.x && newHead.y === this.food.y;
+
+    if (isFood) {
+      this.eatSound.currentTime = 0;
+      this.eatSound.play()
+      this.snake = [newHead, ...this.snake];
+      this.score++;
+      this.generateFood();
+    } else {
+      this.snake = [newHead, ...this.snake.slice(0, -1)];
+    }
+  }
+
+  getNextPosition(direction: string): Position {
+    const head = this.snake[0];
+
+    let x = head.x;
+    let y = head.y;
+
+    if (direction === 'RIGHT') x++;
+    if (direction === 'LEFT') x--;
+    if (direction === 'UP') y--;
+    if (direction === 'DOWN') y++;
+
+    return { x, y };
   }
 
   changeDirection(direction: string) {
@@ -80,6 +112,14 @@ export class Game {
     if (direction === 'RIGHT' && this.direction === 'LEFT') return;
     if (direction === 'UP' && this.direction === 'DOWN') return;
     if (direction === 'DOWN' && this.direction === 'UP') return;
+
+    const nextPosition = this.getNextPosition(direction);
+
+    const isSnake = this.snake.some(
+      (segment) => segment.x === nextPosition.x && segment.y === nextPosition.y,
+    );
+
+    if (isSnake) return;
 
     this.direction = direction;
   }
