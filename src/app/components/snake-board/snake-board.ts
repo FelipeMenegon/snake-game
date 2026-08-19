@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectorRef, HostListener } from '@angular/core';
+import { Component, ChangeDetectorRef, HostListener, Input } from '@angular/core';
 import { Position } from '../../models/position/position-module';
 import { Game } from '../../services/game';
 
@@ -10,11 +10,17 @@ import { Game } from '../../services/game';
   styleUrl: './snake-board.css',
 })
 export class SnakeBoard {
+  @Input() paused = false;
+
   constructor(
     public game: Game,
     private cdr: ChangeDetectorRef,
   ) {
     setInterval(() => {
+      if (this.paused) {
+        return;
+      }
+
       this.game.moveSnake();
       this.cdr.detectChanges();
     }, 200);

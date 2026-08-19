@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { SnakeBoard } from '../../components/snake-board/snake-board';
 import { GameMenuComponent } from '../../components/game-menu/game-menu';
 
@@ -10,20 +10,23 @@ import { GameMenuComponent } from '../../components/game-menu/game-menu';
 })
 export class GamePage {
   showMenu = true;
+  gameStarted = false;
 
   highScore = 0;
 
   startGame(): void {
+    this.gameStarted = true;
     this.showMenu = false;
-
-    // Aqui você inicia o jogo.
   }
 
-  openInstructions(): void {
-    // Abrir modal de instruções
+  continueGame() {
+    this.showMenu = false;
   }
 
-  openSettings(): void {
-    // Abrir modal de configurações
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboard(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.showMenu = true;
+    }
   }
 }

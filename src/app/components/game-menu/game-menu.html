@@ -13,13 +13,21 @@
 
     <p class="subtitle">Seja bem-vindo(a)!</p>
 
+    @if (!gameStarted) {
     <div class="menu-buttons">
       <button class="menu-button primary" (click)="play.emit()">
         <span class="icon">▶</span>
         JOGAR
       </button>
     </div>
-
+    } @else {
+    <div class="menu-buttons">
+      <button class="menu-button primary" (click)="play.emit()">
+        <span class="icon">▶</span>
+        CONTINUAR
+      </button>
+    </div>
+    }
     <div class="high-score">
       <span>PONTUAÇÃO:</span>
       <strong>0</strong>

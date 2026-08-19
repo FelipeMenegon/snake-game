@@ -12,6 +12,7 @@ export class GameMenuComponent {
   constructor(private gameService: Game){}
 
   @Input() highScore!: number;
+  @Input() gameStarted!: boolean;
 
   @Output() play = new EventEmitter<void>();
   @Output() instructions = new EventEmitter<void>();

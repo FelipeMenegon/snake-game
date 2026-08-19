@@ -1,7 +1,6 @@
-@if (!showMenu){
-<app-snake-board />
-}
+
+<app-snake-board [paused]="showMenu" />
 
 @if (showMenu) {
-<app-game-menu [highScore]="highScore" />
+<app-game-menu [highScore]="highScore" (play)="startGame()" [gameStarted]="gameStarted" (continue)="continueGame()" />
 }
