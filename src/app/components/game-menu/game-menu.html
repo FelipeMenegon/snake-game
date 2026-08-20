@@ -11,9 +11,9 @@
       <span>SNAKE</span>
     </h1>
 
-    <p class="subtitle">Seja bem-vindo(a)!</p>
 
     @if (!gameStarted) {
+    <p class="subtitle">Seja bem-vindo(a)!</p>
     <div class="menu-buttons">
       <button class="menu-button primary" (click)="play.emit()">
         <span class="icon">▶</span>
@@ -21,6 +21,7 @@
       </button>
     </div>
     } @else {
+    <p class="subtitle">Jogo Pausado!</p>
     <div class="menu-buttons">
       <button class="menu-button primary" (click)="play.emit()">
         <span class="icon">▶</span>
@@ -37,7 +38,7 @@
     } @else {
     <div class="high-score">
       <span>PONTUAÇÃO:</span>
-      <strong>{{highScore}}</strong>
+      <strong>{{score}}</strong>
     </div>
     }
   </div>

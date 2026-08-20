@@ -149,41 +149,44 @@
 
   font-family: 'Trebuchet MS', sans-serif;
 
-  font-size: 18px;
+  font-size: 14px;
 
   font-weight: 800;
 
   letter-spacing: 2px;
 
   text-transform: uppercase;
+
+  margin-bottom: 30px;
 }
 
 /* Pontuação */
 
 .score-container {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
-  gap: 8px;
+  gap: 40px;
 
   margin-top: 30px;
   padding-top: 18px;
-
   border-top: 3px dashed #d7c78e;
 
   font-family: 'Trebuchet MS', sans-serif;
   font-size: 17px;
   font-weight: 800;
   letter-spacing: 1px;
-
   color: #927a4c;
 }
 
-.score-container strong {
-  color: #e49a18;
+.score-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
+.score-item strong {
+  color: #e49a18;
   font-size: 18px;
 }
 

@@ -5,6 +5,8 @@ import { Position } from '../models/position/position-module';
   providedIn: 'root',
 })
 export class Game {
+  gameOverSound = new Audio('sound/gameover.mp3');
+
   isGameOver = false;
 
   boardSize = 20;
@@ -14,6 +16,8 @@ export class Game {
   food!: Position;
 
   score = 0;
+
+  highScore = Number(localStorage.getItem('snake-high-score')) || 0;
 
   direction = 'RIGHT';
 
@@ -83,6 +87,8 @@ export class Game {
       newHead.y < 0
     ) {
       this.isGameOver = true;
+
+      this.gameOverSound.play();
       return;
     }
 
@@ -92,6 +98,8 @@ export class Game {
 
     if (isSnake) {
       this.isGameOver = true;
+
+      this.gameOverSound.play();
       return;
     }
 
@@ -102,6 +110,13 @@ export class Game {
       this.eatSound.play();
       this.snake = [newHead, ...this.snake];
       this.score++;
+
+      if (this.score > this.highScore) {
+        this.highScore = this.score;
+
+        localStorage.setItem('snake-high-score', this.highScore.toString());
+      }
+
       this.generateFood();
     } else {
       this.snake = [newHead, ...this.snake.slice(0, -1)];

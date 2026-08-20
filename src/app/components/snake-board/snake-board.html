@@ -1,6 +1,6 @@
 <div class="game-container">
 
-    
+
     <div class="board">
         <div class="apple-icon">
             🍎 {{ game.score }}
@@ -31,8 +31,15 @@
             </button>
 
             <div class="score-container">
-                <span>PONTUAÇÃO:</span>
-                <strong>{{ game.score }}</strong>
+                <div class="score-item">
+                    <span>MAIOR PONTUAÇÃO:</span>
+                    <strong>{{ game.highScore }}</strong>
+                </div>
+
+                <div class="score-item">
+                    <span>PONTUAÇÃO:</span>
+                    <strong>{{ game.score }}</strong>
+                </div>
             </div>
 
         </div>
