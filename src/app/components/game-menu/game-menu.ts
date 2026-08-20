@@ -8,10 +8,11 @@ import { Game } from '../../services/game';
   styleUrl: './game-menu.css',
 })
 export class GameMenuComponent {
-  
-  constructor(private gameService: Game){}
+  constructor(private gameService: Game) {
+    this.highScore = this.gameService.score;
+  }
+  highScore = 0;
 
-  @Input() highScore!: number;
   @Input() gameStarted!: boolean;
 
   @Output() play = new EventEmitter<void>();

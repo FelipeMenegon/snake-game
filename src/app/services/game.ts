@@ -5,6 +5,8 @@ import { Position } from '../models/position/position-module';
   providedIn: 'root',
 })
 export class Game {
+  isGameOver = false;
+
   boardSize = 20;
 
   snake: Position[] = [];
@@ -44,6 +46,10 @@ export class Game {
   }
 
   moveSnake() {
+    if (this.isGameOver) {
+      return;
+    }
+
     const head = this.snake[0];
 
     let newX = head.x;
@@ -76,7 +82,16 @@ export class Game {
       newHead.x < 0 ||
       newHead.y < 0
     ) {
-      console.log('Game Over');
+      this.isGameOver = true;
+      return;
+    }
+
+    const isSnake = this.snake.some(
+      (segment) => segment.x === newHead.x && segment.y === newHead.y,
+    );
+
+    if (isSnake) {
+      this.isGameOver = true;
       return;
     }
 
@@ -84,7 +99,7 @@ export class Game {
 
     if (isFood) {
       this.eatSound.currentTime = 0;
-      this.eatSound.play()
+      this.eatSound.play();
       this.snake = [newHead, ...this.snake];
       this.score++;
       this.generateFood();
@@ -122,5 +137,12 @@ export class Game {
     if (isSnake) return;
 
     this.direction = direction;
+  }
+
+  restartGame() {
+    this.score = 0;
+    this.direction = 'RIGHT';
+    this.isGameOver = false;
+    this.inicializeGame();
   }
 }

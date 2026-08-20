@@ -4,4 +4,35 @@
             [class.odd]="!isEven(cell)" [class.food]="isFood(cell)">
         </div>
     </div>
+    @if (game.isGameOver) {
+  <div class="game-over-overlay">
+    <div class="game-over-modal">
+      
+      <div class="window-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <h1>GAME OVER</h1>
+
+      <p class="game-over-subtitle">
+        A COBRA BATEU!
+      </p>
+
+      <div class="score-container">
+        <span>PONTUAÇÃO:</span>
+        <strong>{{ game.score }}</strong>
+      </div>
+
+      <button
+        class="restart-button"
+        (click)="game.restartGame()"
+      >
+        <span class="play-icon">↻</span>
+        JOGAR NOVAMENTE
+      </button>
+
+    </div>
 </div>
+}

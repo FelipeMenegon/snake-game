@@ -19,11 +19,11 @@
 }
 
 .even {
-  background-color: rgb(182, 226, 128)
+  background-color: rgb(182, 226, 128);
 }
 
 .odd {
-  background-color: rgb(153, 207, 87)
+  background-color: rgb(153, 207, 87);
 }
 
 .food {
@@ -32,4 +32,248 @@
 
 .snake {
   background-color: #3b3ecf;
+}
+
+.game-over-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(9, 28, 8, 0.8);
+
+  z-index: 1000;
+
+  animation: gameOverFadeIn 0.4s ease forwards;
+}
+
+.game-over-modal {
+  position: relative;
+
+  width: min(420px, calc(100% - 40px));
+
+  padding: 38px 34px 28px;
+
+  background: #fff4c7;
+
+  border: 5px solid #263d24;
+  border-radius: 28px;
+
+  box-shadow:
+    0 8px 0 #172617,
+    0 18px 30px rgba(0, 0, 0, 0.3);
+
+  text-align: center;
+
+  animation: gameOverModalIn 0.45s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+
+/* Decoração */
+.window-dots {
+  position: absolute;
+
+  top: 16px;
+  left: 20px;
+
+  display: flex;
+  gap: 5px;
+}
+
+.window-dots span {
+  display: block;
+
+  width: 10px;
+  height: 10px;
+
+  background: #b82b2b;
+
+  border: 2px solid #263d24;
+  border-radius: 50%;
+}
+
+/* Título */
+
+.game-over-modal h1 {
+  margin: 8px 0 4px;
+
+  font-family: 'Arial Rounded MT Bold', 'Trebuchet MS', sans-serif;
+
+  font-size: clamp(42px, 13vw, 64px);
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 2px;
+
+  color: #b82b2b;
+
+  text-shadow:
+    3px 3px 0 #263d24,
+    5px 5px 0 #f0a928;
+}
+
+/* Subtítulo */
+
+.game-over-subtitle {
+  margin: 8px 0 26px;
+
+  color: #755b32;
+
+  font-family: 'Trebuchet MS', sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+/* Pontuação */
+
+.score-container {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 0;
+  margin-bottom: 26px;
+
+  padding-top: 18px;
+
+  border-top: 3px dashed #d7c78e;
+
+  font-family: 'Trebuchet MS', sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  color: #927a4c;
+}
+
+.score-container strong {
+  color: #e49a18;
+
+  font-size: 20px;
+}
+
+/* Botão */
+
+.restart-button {
+  width: 100%;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  border: 4px solid #3d2424;
+
+  border-radius: 16px;
+
+  background: #b82b2b;
+
+  color: #ffffff;
+
+  font-family: 'Arial Rounded MT Bold', 'Trebuchet MS', sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 0 #3f0a0a;
+
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.restart-button:hover {
+  transform: translateY(-2px);
+
+  background: #a82727;
+
+  box-shadow: 0 8px 0 #631414;
+}
+
+.restart-button:active {
+  transform: translateY(3px);
+
+  background: #922121;
+
+  box-shadow: 0 2px 0 #531313;
+}
+
+/* Ícone */
+
+.play-icon {
+  font-size: 18px;
+
+  line-height: 1;
+}
+
+/* Responsivo */
+
+@media (max-width: 600px) {
+  .game-over-modal {
+    width: min(420px, calc(100% - 40px));
+
+    padding: 38px 24px 28px;
+
+    border-radius: 28px;
+  }
+
+  .game-over-modal h1 {
+    font-size: 44px;
+  }
+
+  .game-over-subtitle {
+    font-size: 12px;
+  }
+
+  .restart-button {
+    height: 58px;
+
+    font-size: 15px;
+  }
+}
+
+@keyframes gameOverFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gameOverModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

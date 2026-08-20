@@ -2,5 +2,5 @@
 <app-snake-board [paused]="showMenu" />
 
 @if (showMenu) {
-<app-game-menu [highScore]="highScore" (play)="startGame()" [gameStarted]="gameStarted" (continue)="continueGame()" />
+<app-game-menu (play)="startGame()" [gameStarted]="gameStarted" (continue)="continueGame()" />
 }
