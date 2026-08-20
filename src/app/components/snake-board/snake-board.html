@@ -1,38 +1,40 @@
 <div class="game-container">
+
+    
     <div class="board">
-        <div class="cell" *ngFor="let cell of cells" [class.snake]="isSnake(cell)" [class.even]="isEven(cell)" 
+        <div class="apple-icon">
+            🍎 {{ game.score }}
+        </div>
+        <div class="cell" *ngFor="let cell of cells" [class.snake]="isSnake(cell)" [class.even]="isEven(cell)"
             [class.odd]="!isEven(cell)" [class.food]="isFood(cell)">
         </div>
     </div>
     @if (game.isGameOver) {
-  <div class="game-over-overlay">
-    <div class="game-over-modal">
-      
-      <div class="window-dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <div class="game-over-overlay">
+        <div class="game-over-modal">
 
-      <h1>GAME OVER</h1>
+            <div class="window-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
-      <p class="game-over-subtitle">
-        A COBRA BATEU!
-      </p>
+            <h1>GAME OVER</h1>
 
-      <div class="score-container">
-        <span>PONTUAÇÃO:</span>
-        <strong>{{ game.score }}</strong>
-      </div>
+            <p class="game-over-subtitle">
+                A COBRA BATEU!
+            </p>
 
-      <button
-        class="restart-button"
-        (click)="game.restartGame()"
-      >
-        <span class="play-icon">↻</span>
-        JOGAR NOVAMENTE
-      </button>
+            <button class="restart-button" (click)="game.restartGame()">
+                <span class="play-icon">↻</span>
+                JOGAR NOVAMENTE
+            </button>
 
+            <div class="score-container">
+                <span>PONTUAÇÃO:</span>
+                <strong>{{ game.score }}</strong>
+            </div>
+
+        </div>
     </div>
-</div>
-}
+    }

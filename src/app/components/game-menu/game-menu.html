@@ -28,9 +28,17 @@
       </button>
     </div>
     }
+
+    @if (!gameStarted) {
+    <div class="high-score">
+      <span>MAIOR PONTUAÇÃO:</span>
+      <strong>{{highScore}}</strong>
+    </div>
+    } @else {
     <div class="high-score">
       <span>PONTUAÇÃO:</span>
       <strong>{{highScore}}</strong>
     </div>
+    }
   </div>
 </div>
