@@ -15,7 +15,7 @@
     @if (!gameStarted) {
     <p class="subtitle">Seja bem-vindo(a)!</p>
     <div class="menu-buttons">
-      <button class="menu-button primary" (click)="play.emit()">
+      <button class="menu-button primary" (click)="play.emit(); playSound()">
         <span class="icon">▶</span>
         JOGAR
       </button>
@@ -23,7 +23,7 @@
     } @else {
     <p class="subtitle">Jogo Pausado!</p>
     <div class="menu-buttons">
-      <button class="menu-button primary" (click)="play.emit()">
+      <button class="menu-button primary" (click)="play.emit();">
         <span class="icon">▶</span>
         CONTINUAR
       </button>

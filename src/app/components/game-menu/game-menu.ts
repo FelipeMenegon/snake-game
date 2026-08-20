@@ -14,10 +14,15 @@ export class GameMenuComponent {
   }
   score = 0;
   highScore = 0;
+  soundplay = new Audio('sound/start.mp3');
 
   @Input() gameStarted!: boolean;
 
   @Output() play = new EventEmitter<void>();
-  @Output() instructions = new EventEmitter<void>();
-  @Output() settings = new EventEmitter<void>();
+
+
+  playSound() {
+    this.soundplay.currentTime = 0.5;
+    this.soundplay.play();
+  }
 }
